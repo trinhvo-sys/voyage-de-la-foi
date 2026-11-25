@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Le voyage de la foi – France–Asie, XVIIe siècle</title>
+  <meta name="description" content="Évolution de la perception de huit thèmes religieux chez quatre voyageurs partis de France vers l'Asie au XVIIe siècle.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="entete">
+      <div>
+        <p class="surtitre">Cartographie · XVIIe siècle</p>
+        <h1>Le voyage de la foi</h1>
+        <p class="chapo">Comment quatre voyageurs partis de France perçoivent huit thèmes de leur foi, étape après étape, jusqu’en Asie.</p>
+      </div>
+      <p class="source" id="source"></p>
+    </header>
+
+    <nav class="onglets" id="onglets" aria-label="Étapes du voyage"></nav>
+
+    <div class="principal">
+      <section class="carte" aria-label="Carte du voyage">
+        <svg id="carte" viewBox="0 0 1000 481" role="img" aria-label="Carte de l’itinéraire de la France à l’Asie">
+          <g id="calque">
+            <path id="fond" class="terre"></path>
+            <g id="pays"></g>
+            <polyline id="route-tout" class="route route-avenir"></polyline>
+            <polyline id="route-faite" class="route route-faite"></polyline>
+            <g id="villes"></g>
+          </g>
+        </svg>
+
+        <div class="encart" id="encart" aria-live="polite">
+          <span class="encart-surtitre" id="encart-surtitre"></span>
+          <span class="encart-titre" id="encart-titre"></span>
+          <span class="encart-texte" id="encart-epoque"></span>
+          <span class="encart-texte" id="encart-religions"></span>
+        </div>
+
+        <div class="bulle" id="bulle" hidden></div>
+
+        <div class="legende">
+          <span><svg width="22" height="6" aria-hidden="true"><line x1="0" y1="3" x2="22" y2="3" stroke="#B5541C" stroke-width="3"/></svg>Trajet parcouru</span>
+          <span><svg width="22" height="6" aria-hidden="true"><line x1="0" y1="3" x2="22" y2="3" stroke="#B5541C" stroke-width="2" stroke-dasharray="4 4" opacity="0.6"/></svg>Trajet à venir</span>
+          <span><i class="pastille"></i>Étape affichée</span>
+          <span class="aide">Survolez un pays pour le détail, cliquez pour y aller</span>
+        </div>
+
+        <div class="fleches">
+          <button type="button" id="precedent" aria-label="Étape précédente">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button type="button" id="suivant" class="plein" aria-label="Étape suivante">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+      </section>
+
+      <aside class="panneau" aria-label="Données de l’étape">
+        <div>
+          <span class="etiquette" id="etiquette-voyageur">Voyageur</span>
+          <div class="voyageurs" id="voyageurs" role="group" aria-labelledby="etiquette-voyageur"></div>
+        </div>
+        <div class="panneau-titre">
+          <h2 id="titre-panneau"></h2>
+          <span id="sous-titre-panneau"></span>
+        </div>
+        <div class="barres" id="barres"></div>
+        <p class="note">Trait orange : valeur à l’étape précédente. Variation en points.</p>
+        <div class="hypotheses" id="hypotheses"></div>
+      </aside>
+    </div>
+
+    <section class="evolution" aria-label="Évolution sur tout le voyage">
+      <div class="evolution-titre">
+        <h2 id="titre-evolution"></h2>
+        <span>Plus la case est foncée, plus le pourcentage est élevé. Les étapes pas encore atteintes restent grisées.</span>
+      </div>
+      <div class="defilement">
+        <table id="tableau"></table>
+      </div>
+    </section>
+
+    <footer class="pied">
+      Fond de carte : Natural Earth (domaine public), frontières actuelles. Données : <span id="source-pied"></span>.
+    </footer>
+  </div>
+
+  <script src="carte.js"></script>
+  <script src="donnees.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
